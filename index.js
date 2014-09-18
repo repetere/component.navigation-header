@@ -5,4 +5,6 @@
  * Copyright (c) 2013 AmexPub. All rights reserved.
  */
 
+'use strict';
+
 module.exports = require('./lib/component.navigation-header');
