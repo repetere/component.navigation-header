@@ -1,6 +1,6 @@
 # component.navigation-header
 
-The header is composed of various effects. It has a perspective wrapper, a front and a bottom (for the 3d rotation). Inspired by [On scroll header effects from codrops][http://tympanus.net/codrops/2013/07/16/on-scroll-header-effects/]
+The header is composed of various effects. It has a perspective wrapper, a front and a bottom (for the 3d rotation). Inspired by [On scroll header effects from codrops](http://tympanus.net/codrops/2013/07/16/on-scroll-header-effects/)
 
 ## Example
 
