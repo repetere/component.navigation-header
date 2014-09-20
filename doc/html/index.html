@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Index</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Index</h1>
+
+    
+
+
+    
+
+
+    <h3> </h3>
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+    <section>
+        <article><h1>component.navigation-header</h1><p>The header is composed of various effects. It has a perspective wrapper, a front and a bottom (for the 3d rotation). Inspired by <a href="http://tympanus.net/codrops/2013/07/16/on-scroll-header-effects/">On scroll header effects from codrops</a></p>
+<h2>Example</h2><p>Check out <code>example/index.html</code>, the example javascript for the example page is <code>resources/js/example_src.js</code></p>
+<p><a href="http://typesettin.github.io/component.navigation-header">Live Demo - http://typesettin.github.io/component.navigation-header</a></p>
+<h2>Installation</h2><pre><code>$ npm install periodicjs.theme-component.navigation-header
+</code></pre><p>The navigation component is a browserify javascript module.</p>
+<h2>Usage</h2><p><em>JavaScript</em></p>
+<pre><code class="lang-javascript">var navComponent = require('periodicjs.theme-component.navigation-header'),
+    myNav;
+//initialize nav component after the dom has loaded
+window.addEventListener('load',function(){
+    myNav = new navComponent({
+        idSelector: 'ha-header',
+        navStyle: 7,
+        subNavStyle: 6
+    });
+    //expose your nav component to the window global namespace
+    window.myNav = myNav;
+});
+</code></pre>
+<p><em>HTML</em></p>
+<pre><code class="lang-html">&lt;html&gt;
+    &lt;head&gt;
+      &lt;title&gt;Your Page&lt;/title&gt;
+      &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;[path/to]/component.navigation-header.css&quot;&gt;
+      &lt;script src='[path/to/browserify/bundle].js'&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div class=&quot;header-container&quot;&gt;
+        &lt;header id=&quot;ha-header&quot; class=&quot;ha-header ha-header-rotateBack&quot;&gt;
+              &lt;div class=&quot;ha-header-perspective&quot;&gt;
+                &lt;div class=&quot;ha-header-front&quot;&gt;
+                  &lt;h1&gt;
+                    &lt;a href=&quot;/&quot;&gt;
+                      &lt;img src=&quot;http://getperiodic.org/assets/img/periodic-favicon.png&quot;&gt;
+                    &lt;/a&gt;
+                  &lt;/h1&gt;
+                  &lt;nav id=&quot;ha-header-nav-id&quot;&gt;
+                    &lt;a href=&quot;/items&quot; data-navitr=&quot;0&quot;&gt;items&lt;/a&gt;
+                    &lt;a href=&quot;/collections&quot; data-navitr=&quot;1&quot; class=&quot;&quot;&gt;collections&lt;/a&gt;
+                    &lt;a href=&quot;/browse/contenttypes&quot; data-navitr=&quot;2&quot; class=&quot;has-sub-nav&quot;&gt;browse&lt;/a&gt;
+                    &lt;a class=&quot;search-nav&quot;&gt;
+                      &lt;form action=&quot;/search&quot; method=&quot;get&quot; class=&quot;_pea-form&quot;&gt;
+                        &lt;input type=&quot;text&quot;&gt;
+                      &lt;/form&gt;
+                    &lt;/a&gt;
+                  &lt;/nav&gt;
+                &lt;/div&gt;
+                &lt;div id=&quot;ha-header-subnav-id&quot; class=&quot;ha-header-bottom&quot;&gt;
+                  &lt;nav data-itr=&quot;2&quot; style=&quot;display: none;&quot;&gt;
+                    &lt;a href=&quot;/browse/authors&quot; data-navitr=&quot;0&quot; class=&quot;&quot;&gt;Authors&lt;/a&gt;
+                    &lt;a href=&quot;/browse/contenttypes&quot; data-navitr=&quot;1&quot; class=&quot;&quot;&gt;Content Types&lt;/a&gt;
+                    &lt;a href=&quot;/browse/categories&quot; data-navitr=&quot;2&quot; class=&quot;&quot;&gt;Categories&lt;/a&gt;
+                    &lt;a href=&quot;/browse/tags&quot; data-navitr=&quot;3&quot; class=&quot;&quot;&gt;Tags&lt;/a&gt;
+                  &lt;/nav&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/header&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;container&quot;&gt;
+          your page content
+      &lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h2>API</h2><pre><code class="lang-javascript">myNav.showNav(1); //show nav with &quot;ha-header-large&quot; style
+myNav.showSubNav(6); //show sub nav with &quot;ha-header-subshow&quot; style
+myNav.hideSubNav(); //hide sub nav
+</code></pre>
+<h3><a href="https://github.com/typesettin/component.navigation-header/blob/master/doc/api.md"><em>FULL API DOCUMENTATION</em></a></h3><h2>Development</h2><p><em>Make sure you have grunt installed</em></p>
+<pre><code>$ npm install -g grunt-cli
+</code></pre><p>Then run grunt watch</p>
+<pre><code>$ grunt watch
+</code></pre><h2>Notes</h2><ul>
+<li>The Navigation Module uses Node's event Emitter for event handling.</li>
+<li>The Template Generator uses EJS, but you can generate your own mark up</li>
+<li>The less file is located in <code>resources/stylesheets</code></li>
+</ul></article>
+    </section>
+
+
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="navigationHeader.html">navigationHeader</a></li></ul><h3>Events</h3><ul><li><a href="global.html#event:openSubNav">openSubNav</a></li></ul><h3>Global</h3><ul><li><a href="global.html#getEventTarget">getEventTarget</a></li><li><a href="global.html#navStyles">navStyles</a></li><li><a href="global.html#showNav">showNav</a></li><li><a href="global.html#showSubNav">showSubNav</a></li><li><a href="global.html#subNavStyles">subNavStyles</a></li></ul>
+</nav>
+
+<br clear="both">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha5</a> on Sat Sep 20 2014 13:52:54 GMT-0400 (EDT)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

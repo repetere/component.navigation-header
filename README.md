@@ -6,6 +6,8 @@ The header is composed of various effects. It has a perspective wrapper, a front
 
 Check out `example/index.html`, the example javascript for the example page is `resources/js/example_src.js`
 
+[Live Demo - http://typesettin.github.io/component.navigation-header](http://typesettin.github.io/component.navigation-header)
+
 ## Installation
 
 ```
@@ -86,6 +88,9 @@ myNav.showNav(1); //show nav with "ha-header-large" style
 myNav.showSubNav(6); //show sub nav with "ha-header-subshow" style
 myNav.hideSubNav(); //hide sub nav
 ```
+###[*FULL API DOCUMENTATION*](https://github.com/typesettin/component.navigation-header/blob/master/doc/api.md)
+
+
 ##Development
 *Make sure you have grunt installed*
 ```

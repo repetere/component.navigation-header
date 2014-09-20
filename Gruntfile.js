@@ -36,7 +36,7 @@ module.exports = function (grunt) {
 			]
 		},
 		jsbeautifier: {
-			files: ['<%= jshint.all %>', '!resources/template/component_navigation_header.ejs'],
+			files: ['<%= jshint.all %>', '!resources/template/component_navigation_header.ejs', '!resources/template/index.ejs'],
 			options: {
 				config: '.jsbeautify'
 			}

@@ -11,11 +11,12 @@
 module.exports = require('./lib/component.navigation-header');
 
 },{"./lib/component.navigation-header":2}],2:[function(require,module,exports){
-/*
- * component.navigation-header
- * http://github.amexpub.com/modules
- *
- * Copyright (c) 2014 Yaw Joseph Etse. All rights reserved.
+/**
+ * @title component.navigation-header
+ * @{@link https://github.com/typesettin/component.navigation-header}
+ * @author Yaw Joseph Etse
+ * @copyright Copyright (c) 2014 Typesettin. All rights reserved.
+ * @license MIT
  */
 'use strict';
 
@@ -24,16 +25,37 @@ var classie = require('classie'),
 	events = require('events'),
 	util = require('util');
 
+/**
+ * recalculate the window dimensions.
+ * @method getEventTarget
+ * @param {object} e event object
+ * @returns {object} dom element event target
+ */
 var getEventTarget = function (e) {
 	// e = e || window.event;
 	return e.target || e.srcElement;
 };
 
+/**
+ * A module that a fixed navigation header.
+ * @{@link https://github.com/typesettin/component.navigation-header}
+ * @author Yaw Joseph Etse
+ * @copyright Copyright (c) 2014 Typesettin. All rights reserved.
+ * @license MIT
+ * @constructor navigationHeader
+ * @requires module:classie
+ * @requires module:util-extent
+ * @requires module:util
+ * @requires module:events
+ */
 var navigationHeader = function (config) {
+	/** call event emitter */
 	events.EventEmitter.call(this);
 
+	/** navigation style options array */
 	this.navStyles = ['ha-header-large', 'ha-header-small', 'ha-header-hide', 'ha-header-show', 'ha-header-subshow', 'ha-header-shrink', 'ha-header-rotate', 'ha-header-rotateBack', 'ha-header-color', 'ha-header-box', 'ha-header-fullscreen', 'ha-header-subfullscreen'];
 	this.emit('navigationInitialized');
+	/** sub navigation style object mapper to navigation style, this allows for quick assignmnent of a navigation style and a sub navigaiton style */
 	this.subNavStyles = {
 		0: 4,
 		1: 4,
@@ -48,9 +70,16 @@ var navigationHeader = function (config) {
 	this.init = function (options) {
 		return this._init(options);
 	};
+	/** set the navigation style
+	 * @param {number} style index of style in @this.navStyles
+	 */
 	this.showNav = function (style) {
 		return this._showNav(style);
 	};
+	/** show the sub navigation style
+	 *	@inner showSubNav
+	 * @param {number} style index of style in @this.navStyles
+	 */
 	this.showSubNav = function (subnavToShow) {
 		return this._showSubNav(subnavToShow);
 	};
@@ -63,6 +92,12 @@ var navigationHeader = function (config) {
 
 util.inherits(navigationHeader, events.EventEmitter);
 
+/**
+ * Sets up a new navigation header component.
+ * @param {object} options - configuration options
+ * @emits - navigationInitialized
+ * @private
+ */
 navigationHeader.prototype._init = function (options) {
 	var defaults = {
 		idSelector: 'ha-header',
@@ -76,9 +111,17 @@ navigationHeader.prototype._init = function (options) {
 	this._initEvents();
 	this.emit('navigationInitialized');
 };
+/**
+ * Returns current navigation header config object.
+ * @return {object} - navigation header instance configuration object
+ */
 navigationHeader.prototype.getOptions = function () {
 	return this.options;
 };
+/**
+ * updates the state of the navigation element
+ * @private
+ */
 navigationHeader.prototype._config = function () {
 	// the list of items
 	this.$list = this.$el.getElementsByTagName('ul')[0];
@@ -86,16 +129,25 @@ navigationHeader.prototype._config = function () {
 	this.current = 0;
 	this.old = 0;
 };
+/**
+ * initializes navigation element events
+ * @private
+ */
 navigationHeader.prototype._initEvents = function () {
-	var self = this,
-		openSubNav = function (event) {
-			// console.log('moving on nav');
-			var target = getEventTarget(event);
-			if (classie.hasClass(target, 'has-sub-nav')) {
-				self.showSubNav(target.getAttribute('data-navitr'));
-				self.$navbar.removeEventListener('mousemove', openSubNav);
-			}
-		};
+	var self = this;
+	/**
+	 * recalculate the window dimensions.
+	 * @event openSubNav
+	 * @param {object} event event object
+	 */
+	var openSubNav = function (event) {
+		// console.log('moving on nav');
+		var target = getEventTarget(event);
+		if (classie.hasClass(target, 'has-sub-nav')) {
+			self.showSubNav(target.getAttribute('data-navitr'));
+			self.$navbar.removeEventListener('mousemove', openSubNav);
+		}
+	};
 	this.$navbar = document.getElementById(this.options.element + '-nav-id');
 	this.$subnavbar = document.getElementById(this.options.element + '-subnav-id');
 	this.$navbar.addEventListener('mousemove', openSubNav);
@@ -104,6 +156,12 @@ navigationHeader.prototype._initEvents = function () {
 		self.$navbar.addEventListener('mousemove', openSubNav);
 	});
 };
+/**
+ * set the navigation element style, by looking up the style in the navstyle array.
+ * @private
+ * @param {number} style style option
+ * @fires - navigationShowEvent
+ */
 navigationHeader.prototype._showNav = function (style) {
 	if (typeof style === 'number') {
 		this.$el.setAttribute('class', 'ha-header ' + this.navStyles[style]);
@@ -111,6 +169,12 @@ navigationHeader.prototype._showNav = function (style) {
 		this.emit('navigationShowEvent');
 	}
 };
+/**
+ * show the mapped subnav style by looking up the mapping in the style mapping object.
+ * @private
+ * @param {number} subnavToShow style option
+ * @fires - navigationSubNavShowEvent
+ */
 navigationHeader.prototype._showSubNav = function (subnavToShow) {
 	var subNavItems = this.$subnavbar.getElementsByTagName('nav');
 	for (var x in subNavItems) {
@@ -126,6 +190,11 @@ navigationHeader.prototype._showSubNav = function (subnavToShow) {
 	this.options.subNavStyle = subnavid;
 	this.emit('navigationSubNavShowEvent');
 };
+/**
+ * hides the subnav.
+ * @private
+ * @fires - navigationHideNavShowEvent
+ */
 navigationHeader.prototype._hideSubNav = function () {
 	var navid = this.options.navStyle;
 	this.$el.setAttribute('class', 'ha-header ' + this.navStyles[navid]);
@@ -134,100 +203,7 @@ navigationHeader.prototype._hideSubNav = function () {
 };
 module.exports = navigationHeader;
 
-},{"classie":3,"events":5,"util":9,"util-extend":10}],3:[function(require,module,exports){
-/*
- * classie
- * http://github.amexpub.com/modules/classie
- *
- * Copyright (c) 2013 AmexPub. All rights reserved.
- */
-
-module.exports = require('./lib/classie');
-
-},{"./lib/classie":4}],4:[function(require,module,exports){
-/*!
- * classie - class helper functions
- * from bonzo https://github.com/ded/bonzo
- * 
- * classie.has( elem, 'my-class' ) -> true/false
- * classie.add( elem, 'my-new-class' )
- * classie.remove( elem, 'my-unwanted-class' )
- * classie.toggle( elem, 'my-class' )
- */
-
-/*jshint browser: true, strict: true, undef: true */
-/*global define: false */
-'use strict';
-
-  // class helper functions from bonzo https://github.com/ded/bonzo
-
-  function classReg( className ) {
-    return new RegExp("(^|\\s+)" + className + "(\\s+|$)");
-  }
-
-  // classList support for class management
-  // altho to be fair, the api sucks because it won't accept multiple classes at once
-  var hasClass, addClass, removeClass;
-
-  if (typeof document === "object" && 'classList' in document.documentElement ) {
-    hasClass = function( elem, c ) {
-      return elem.classList.contains( c );
-    };
-    addClass = function( elem, c ) {
-      elem.classList.add( c );
-    };
-    removeClass = function( elem, c ) {
-      elem.classList.remove( c );
-    };
-  }
-  else {
-    hasClass = function( elem, c ) {
-      return classReg( c ).test( elem.className );
-    };
-    addClass = function( elem, c ) {
-      if ( !hasClass( elem, c ) ) {
-        elem.className = elem.className + ' ' + c;
-      }
-    };
-    removeClass = function( elem, c ) {
-      elem.className = elem.className.replace( classReg( c ), ' ' );
-    };
-  }
-
-  function toggleClass( elem, c ) {
-    var fn = hasClass( elem, c ) ? removeClass : addClass;
-    fn( elem, c );
-  }
-
-  var classie = {
-    // full names
-    hasClass: hasClass,
-    addClass: addClass,
-    removeClass: removeClass,
-    toggleClass: toggleClass,
-    // short names
-    has: hasClass,
-    add: addClass,
-    remove: removeClass,
-    toggle: toggleClass
-  };
-
-  // transport
-
-  if ( typeof module === "object" && module && typeof module.exports === "object" ) {
-    // commonjs / browserify
-    module.exports = classie;
-  } else {
-    // AMD
-    define(classie);
-  }
-
-  // If there is a window object, that at least has a document property,
-  // define classie
-  if ( typeof window === "object" && typeof window.document === "object" ) {
-    window.classie = classie;
-  }
-},{}],5:[function(require,module,exports){
+},{"classie":8,"events":3,"util":7,"util-extend":10}],3:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -530,7 +506,7 @@ function isUndefined(arg) {
   return arg === void 0;
 }
 
-},{}],6:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 if (typeof Object.create === 'function') {
   // implementation from standard node.js 'util' module
   module.exports = function inherits(ctor, superCtor) {
@@ -555,7 +531,7 @@ if (typeof Object.create === 'function') {
   }
 }
 
-},{}],7:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
@@ -620,14 +596,14 @@ process.chdir = function (dir) {
     throw new Error('process.chdir is not supported');
 };
 
-},{}],8:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 module.exports = function isBuffer(arg) {
   return arg && typeof arg === 'object'
     && typeof arg.copy === 'function'
     && typeof arg.fill === 'function'
     && typeof arg.readUInt8 === 'function';
 }
-},{}],9:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 (function (process,global){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -1217,7 +1193,100 @@ function hasOwnProperty(obj, prop) {
 }
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./support/isBuffer":8,"_process":7,"inherits":6}],10:[function(require,module,exports){
+},{"./support/isBuffer":6,"_process":5,"inherits":4}],8:[function(require,module,exports){
+/*
+ * classie
+ * http://github.amexpub.com/modules/classie
+ *
+ * Copyright (c) 2013 AmexPub. All rights reserved.
+ */
+
+module.exports = require('./lib/classie');
+
+},{"./lib/classie":9}],9:[function(require,module,exports){
+/*!
+ * classie - class helper functions
+ * from bonzo https://github.com/ded/bonzo
+ * 
+ * classie.has( elem, 'my-class' ) -> true/false
+ * classie.add( elem, 'my-new-class' )
+ * classie.remove( elem, 'my-unwanted-class' )
+ * classie.toggle( elem, 'my-class' )
+ */
+
+/*jshint browser: true, strict: true, undef: true */
+/*global define: false */
+'use strict';
+
+  // class helper functions from bonzo https://github.com/ded/bonzo
+
+  function classReg( className ) {
+    return new RegExp("(^|\\s+)" + className + "(\\s+|$)");
+  }
+
+  // classList support for class management
+  // altho to be fair, the api sucks because it won't accept multiple classes at once
+  var hasClass, addClass, removeClass;
+
+  if (typeof document === "object" && 'classList' in document.documentElement ) {
+    hasClass = function( elem, c ) {
+      return elem.classList.contains( c );
+    };
+    addClass = function( elem, c ) {
+      elem.classList.add( c );
+    };
+    removeClass = function( elem, c ) {
+      elem.classList.remove( c );
+    };
+  }
+  else {
+    hasClass = function( elem, c ) {
+      return classReg( c ).test( elem.className );
+    };
+    addClass = function( elem, c ) {
+      if ( !hasClass( elem, c ) ) {
+        elem.className = elem.className + ' ' + c;
+      }
+    };
+    removeClass = function( elem, c ) {
+      elem.className = elem.className.replace( classReg( c ), ' ' );
+    };
+  }
+
+  function toggleClass( elem, c ) {
+    var fn = hasClass( elem, c ) ? removeClass : addClass;
+    fn( elem, c );
+  }
+
+  var classie = {
+    // full names
+    hasClass: hasClass,
+    addClass: addClass,
+    removeClass: removeClass,
+    toggleClass: toggleClass,
+    // short names
+    has: hasClass,
+    add: addClass,
+    remove: removeClass,
+    toggle: toggleClass
+  };
+
+  // transport
+
+  if ( typeof module === "object" && module && typeof module.exports === "object" ) {
+    // commonjs / browserify
+    module.exports = classie;
+  } else {
+    // AMD
+    define(classie);
+  }
+
+  // If there is a window object, that at least has a document property,
+  // define classie
+  if ( typeof window === "object" && typeof window.document === "object" ) {
+    window.classie = classie;
+  }
+},{}],10:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -1263,7 +1332,7 @@ var navEvents = function () {
 		console.log('nav loaded');
 	});
 	periodicalNavigation.on('navigationShowEvent', function () {
-		console.log('nav shown');
+		// console.log('nav shown');
 	});
 	periodicalNavigation.on('navigationSubNavShowEvent', function () {
 		console.log('nav sub nav shown');
@@ -1271,6 +1340,36 @@ var navEvents = function () {
 	periodicalNavigation.on('navigationHideNavShowEvent', function () {
 		console.log('nav hide sub nav');
 	});
+
+	window.addEventListener('scroll', function () {
+		var sections = document.querySelectorAll('section');
+
+		if (window.scrollY <= sections[0].offsetTop) {
+			window.periodicalNavigation.showNav(5);
+		}
+		else if (window.scrollY > sections[0].offsetTop && window.scrollY <= sections[1].offsetTop) {
+			window.periodicalNavigation.showNav(1);
+		}
+		else if (window.scrollY > sections[1].offsetTop && window.scrollY <= sections[2].offsetTop) {
+			window.periodicalNavigation.showNav(3);
+		}
+
+		else if (window.scrollY > sections[2].offsetTop && window.scrollY <= sections[3].offsetTop) {
+			window.periodicalNavigation.showNav(8);
+		}
+		else if (window.scrollY > sections[3].offsetTop && window.scrollY <= sections[4].offsetTop) {
+			window.periodicalNavigation.showNav(9);
+		}
+
+		else if (window.scrollY > sections[4].offsetTop && window.scrollY <= sections[5].offsetTop) {
+			window.periodicalNavigation.showNav(2);
+		}
+
+		else if (window.scrollY > sections[5].offsetTop) {
+			window.periodicalNavigation.showNav(10);
+		}
+	});
+
 };
 
 window.addEventListener('load', function () {
