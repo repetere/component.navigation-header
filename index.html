@@ -1,71 +1,141 @@
-<!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Component.navigation-header by typesettin</title>
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
-        <h1>Component.navigation-header</h1>
-        <p>The header is composed of various effects. It has a perspective wrapper, a front and a bottom (for the 3d rotation). Inspired by http://tympanus.net/codrops/2013/07/16/on-scroll-header-effects/</p>
+<head>
+  <title>navigation test</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width,  minimal-ui">
+  <link rel="stylesheet" type="text/css" href="stylesheets/component.navigation-header.css">
+  <script src='js/example.min.js'></script>
+  <style>
+  body {
+    background: #ececec;
+    font-family: Open Sans, Arial, sans-serif;
+  }
+  .container {
+    margin: 3em 5em;
+  }
+  #scroll-info{
+    position:fixed;
+    bottom:0;
+    width:100%;
+    text-align:center;
+    padding:1em;
+    background:#fff;
+    left:-1em;
+    z-index: 100;
+    border-top: 1px solid black;
+  }
+  @media screen and (max-width: 34em) {
+    .container {
+      margin: 5em 1.5em 1em;
+    }
+    .ha-header h1 {
+      display: none;
+    }
+    .ha-header nav {
+      max-width: 100%;
+    }
+  }
+  </style>
+</head>
 
-        <p class="view"><a href="https://github.com/typesettin/component.navigation-header">View the Project on GitHub <small>typesettin/component.navigation-header</small></a></p>
+<body>
+  <div class="header-container">
+    <header id="ha-header" class="ha-header ha-header-rotateBack">
+  <div class="ha-header-perspective">
+    <div class="ha-header-front">
+      <h1>
 
+        <a href="#/">
+          <!-- Periodic -->
+          <img src="http://getperiodic.org/assets/img/periodic-favicon.png">
+        </a>
+      </h1>
+      <nav id="ha-header-nav-id">
 
-        <ul>
-          <li><a href="https://github.com/typesettin/component.navigation-header/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/typesettin/component.navigation-header/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/typesettin/component.navigation-header">View On <strong>GitHub</strong></a></li>
-        </ul>
-      </header>
-      <section>
-        <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+        <a href="#/items" data-navitr="0">items</a>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+        <a href="#/collections" data-navitr="1" class="">collections</a>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
+        <a href="#/browse/contenttypes" data-navitr="2" class="has-sub-nav">sub nav</a>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+        <a class="search-nav">
+          <form action="#/search" method="get" class="_pea-form">
+            <input type="text">
+          </form>
+        </a>
 
-<h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
-
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
-
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
-
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
-
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
-
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-      </section>
-      <footer>
-        <p>This project is maintained by <a href="https://github.com/typesettin">typesettin</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
+      </nav>
     </div>
-    <script src="javascripts/scale.fix.js"></script>
-    
-  </body>
+    <div id="ha-header-subnav-id" class="ha-header-bottom">
+      <nav data-itr="2" style="display: none;">
+        <a href="#/browse/authors" data-navitr="0" class="">Authors</a>
+        <a href="#/browse/contenttypes" data-navitr="1" class="">Content Types</a>
+        <a href="#/browse/categories" data-navitr="2" class="">Categories</a>
+        <a href="#/browse/tags" data-navitr="3" class="">Tags</a>
+      </nav>
+    </div>
+  </div>
+</header>
+  </div>
+  <div class="container">
+    <section id="position-0" class="ha-waypoint" data-animate-down="ha-header-shrink" data-animate-up="ha-header-show">
+      <p>At the present time, eminent breeders try by methodical selection, with a distinct object in view, to make a new strain or sub-breed, superior to anything of the kind in the country. But, for our purpose, a form of selection, which may be called unconscious, and which results from every one trying to possess and breed from the best individual animals, is more important. Thus, a man who intends keeping pointers naturally tries to get as good dogs as he can, and afterwards breeds from his own best dogs, but he has no wish or expectation of permanently altering the breed. Nevertheless we may infer that this process, continued during centuries, would improve and modify any breed, in the same way as Bakewell, Collins, etc., by this very same process, only carried on more methodically, did greatly modify, even during their lifetimes, the forms and qualities of their cattle. Slow and insensible changes of this kind could never be recognised unless actual measurements or careful drawings of the breeds in question have been made long ago, which may serve for comparison. In some cases, however, unchanged, or but little changed, individuals of the same breed exist in less civilised districts, where the breed has been less improved. There is reason to believe that King Charles' spaniel has been unconsciously modified to a large extent since the time of that monarch. Some highly competent authorities are convinced that the setter is directly derived from the spaniel, and has probably been slowly altered from it. It is known that the English pointer has been greatly changed within the last century, and in this case the change has, it is believed, been chiefly effected by crosses with the foxhound; but what concerns us is, that the change has been effected unconsciously and gradually, and yet so effectually that, though the old Spanish pointer certainly came from Spain, Mr. Borrow has not seen, as I am informed by him, any native dog in Spain like our pointer.</p>
+      <p>By a similar process of selection, and by careful training, English race-horses have come to surpass in fleetness and size the parent Arabs, so that the latter, by the regulations for the Goodwood Races, are favoured in the weights which they carry. Lord Spencer and others have shown how the cattle of England have increased in weight and in early maturity, compared with the stock formerly kept in this country. By comparing the accounts given in various old treatises of the former and present state of carrier and tumbler pigeons in Britain, India, and Persia, we can trace the stages through which they have insensibly passed, and come to differ so greatly from the rock-pigeon.</p>
+      <p>Youatt gives an excellent illustration of the effects of a course of selection which may be considered as unconscious, in so far that the breeders could never have expected, or even wished, to produce the result which ensued—namely, the production of the distinct strains. The two flocks of Leicester sheep kept by Mr. Buckley and Mr. Burgess, as Mr. Youatt remarks, "Have been purely bred from the original stock of Mr. Bakewell for upwards of fifty years. There is not a suspicion existing in the mind of any one at all acquainted with the subject that the owner of either of them has deviated in any one instance from the pure blood of Mr. Bakewell's flock, and yet the difference between the sheep possessed by these two gentlemen is so great that they have the appearance of being quite different varieties."</p>
+      <p>If there exist savages so barbarous as never to think of the inherited character of the offspring of their domestic animals, yet any one animal particularly useful to them, for any special purpose, would be carefully preserved during famines and other accidents, to which savages are so liable, and such choice animals would thus generally leave more offspring than the inferior ones; so that in this case there would be a kind of unconscious selection going on. We see the value set on animals even by the barbarians of Tierra del Fuego, by their killing and devouring their old women, in times of dearth, as of less value than their dogs.</p>
+    </section>
+    <section id="position-1" class="ha-waypoint" data-animate-down="ha-header-rotateBack" data-animate-up="ha-header-shrink">
+      <p>At the present time, eminent breeders try by methodical selection, with a distinct object in view, to make a new strain or sub-breed, superior to anything of the kind in the country. But, for our purpose, a form of selection, which may be called unconscious, and which results from every one trying to possess and breed from the best individual animals, is more important. Thus, a man who intends keeping pointers naturally tries to get as good dogs as he can, and afterwards breeds from his own best dogs, but he has no wish or expectation of permanently altering the breed. Nevertheless we may infer that this process, continued during centuries, would improve and modify any breed, in the same way as Bakewell, Collins, etc., by this very same process, only carried on more methodically, did greatly modify, even during their lifetimes, the forms and qualities of their cattle. Slow and insensible changes of this kind could never be recognised unless actual measurements or careful drawings of the breeds in question have been made long ago, which may serve for comparison. In some cases, however, unchanged, or but little changed, individuals of the same breed exist in less civilised districts, where the breed has been less improved. There is reason to believe that King Charles' spaniel has been unconsciously modified to a large extent since the time of that monarch. Some highly competent authorities are convinced that the setter is directly derived from the spaniel, and has probably been slowly altered from it. It is known that the English pointer has been greatly changed within the last century, and in this case the change has, it is believed, been chiefly effected by crosses with the foxhound; but what concerns us is, that the change has been effected unconsciously and gradually, and yet so effectually that, though the old Spanish pointer certainly came from Spain, Mr. Borrow has not seen, as I am informed by him, any native dog in Spain like our pointer.</p>
+      <p>By a similar process of selection, and by careful training, English race-horses have come to surpass in fleetness and size the parent Arabs, so that the latter, by the regulations for the Goodwood Races, are favoured in the weights which they carry. Lord Spencer and others have shown how the cattle of England have increased in weight and in early maturity, compared with the stock formerly kept in this country. By comparing the accounts given in various old treatises of the former and present state of carrier and tumbler pigeons in Britain, India, and Persia, we can trace the stages through which they have insensibly passed, and come to differ so greatly from the rock-pigeon.</p>
+      <p>Youatt gives an excellent illustration of the effects of a course of selection which may be considered as unconscious, in so far that the breeders could never have expected, or even wished, to produce the result which ensued—namely, the production of the distinct strains. The two flocks of Leicester sheep kept by Mr. Buckley and Mr. Burgess, as Mr. Youatt remarks, "Have been purely bred from the original stock of Mr. Bakewell for upwards of fifty years. There is not a suspicion existing in the mind of any one at all acquainted with the subject that the owner of either of them has deviated in any one instance from the pure blood of Mr. Bakewell's flock, and yet the difference between the sheep possessed by these two gentlemen is so great that they have the appearance of being quite different varieties."</p>
+      <p>If there exist savages so barbarous as never to think of the inherited character of the offspring of their domestic animals, yet any one animal particularly useful to them, for any special purpose, would be carefully preserved during famines and other accidents, to which savages are so liable, and such choice animals would thus generally leave more offspring than the inferior ones; so that in this case there would be a kind of unconscious selection going on. We see the value set on animals even by the barbarians of Tierra del Fuego, by their killing and devouring their old women, in times of dearth, as of less value than their dogs.</p>
+    </section>
+    <section id="position-2" class="ha-waypoint" data-animate-down="ha-header-rotate" data-animate-up="ha-header-rotateBack">
+      <p>At the present time, eminent breeders try by methodical selection, with a distinct object in view, to make a new strain or sub-breed, superior to anything of the kind in the country. But, for our purpose, a form of selection, which may be called unconscious, and which results from every one trying to possess and breed from the best individual animals, is more important. Thus, a man who intends keeping pointers naturally tries to get as good dogs as he can, and afterwards breeds from his own best dogs, but he has no wish or expectation of permanently altering the breed. Nevertheless we may infer that this process, continued during centuries, would improve and modify any breed, in the same way as Bakewell, Collins, etc., by this very same process, only carried on more methodically, did greatly modify, even during their lifetimes, the forms and qualities of their cattle. Slow and insensible changes of this kind could never be recognised unless actual measurements or careful drawings of the breeds in question have been made long ago, which may serve for comparison. In some cases, however, unchanged, or but little changed, individuals of the same breed exist in less civilised districts, where the breed has been less improved. There is reason to believe that King Charles' spaniel has been unconsciously modified to a large extent since the time of that monarch. Some highly competent authorities are convinced that the setter is directly derived from the spaniel, and has probably been slowly altered from it. It is known that the English pointer has been greatly changed within the last century, and in this case the change has, it is believed, been chiefly effected by crosses with the foxhound; but what concerns us is, that the change has been effected unconsciously and gradually, and yet so effectually that, though the old Spanish pointer certainly came from Spain, Mr. Borrow has not seen, as I am informed by him, any native dog in Spain like our pointer.</p>
+      <p>By a similar process of selection, and by careful training, English race-horses have come to surpass in fleetness and size the parent Arabs, so that the latter, by the regulations for the Goodwood Races, are favoured in the weights which they carry. Lord Spencer and others have shown how the cattle of England have increased in weight and in early maturity, compared with the stock formerly kept in this country. By comparing the accounts given in various old treatises of the former and present state of carrier and tumbler pigeons in Britain, India, and Persia, we can trace the stages through which they have insensibly passed, and come to differ so greatly from the rock-pigeon.</p>
+      <p>Youatt gives an excellent illustration of the effects of a course of selection which may be considered as unconscious, in so far that the breeders could never have expected, or even wished, to produce the result which ensued—namely, the production of the distinct strains. The two flocks of Leicester sheep kept by Mr. Buckley and Mr. Burgess, as Mr. Youatt remarks, "Have been purely bred from the original stock of Mr. Bakewell for upwards of fifty years. There is not a suspicion existing in the mind of any one at all acquainted with the subject that the owner of either of them has deviated in any one instance from the pure blood of Mr. Bakewell's flock, and yet the difference between the sheep possessed by these two gentlemen is so great that they have the appearance of being quite different varieties."</p>
+      <p>If there exist savages so barbarous as never to think of the inherited character of the offspring of their domestic animals, yet any one animal particularly useful to them, for any special purpose, would be carefully preserved during famines and other accidents, to which savages are so liable, and such choice animals would thus generally leave more offspring than the inferior ones; so that in this case there would be a kind of unconscious selection going on. We see the value set on animals even by the barbarians of Tierra del Fuego, by their killing and devouring their old women, in times of dearth, as of less value than their dogs.</p>
+    </section>
+    <section id="position-3" class="ha-waypoint" data-animate-down="ha-header-rotateBack" data-animate-up="ha-header-rotate">
+      <p>At the present time, eminent breeders try by methodical selection, with a distinct object in view, to make a new strain or sub-breed, superior to anything of the kind in the country. But, for our purpose, a form of selection, which may be called unconscious, and which results from every one trying to possess and breed from the best individual animals, is more important. Thus, a man who intends keeping pointers naturally tries to get as good dogs as he can, and afterwards breeds from his own best dogs, but he has no wish or expectation of permanently altering the breed. Nevertheless we may infer that this process, continued during centuries, would improve and modify any breed, in the same way as Bakewell, Collins, etc., by this very same process, only carried on more methodically, did greatly modify, even during their lifetimes, the forms and qualities of their cattle. Slow and insensible changes of this kind could never be recognised unless actual measurements or careful drawings of the breeds in question have been made long ago, which may serve for comparison. In some cases, however, unchanged, or but little changed, individuals of the same breed exist in less civilised districts, where the breed has been less improved. There is reason to believe that King Charles' spaniel has been unconsciously modified to a large extent since the time of that monarch. Some highly competent authorities are convinced that the setter is directly derived from the spaniel, and has probably been slowly altered from it. It is known that the English pointer has been greatly changed within the last century, and in this case the change has, it is believed, been chiefly effected by crosses with the foxhound; but what concerns us is, that the change has been effected unconsciously and gradually, and yet so effectually that, though the old Spanish pointer certainly came from Spain, Mr. Borrow has not seen, as I am informed by him, any native dog in Spain like our pointer.</p>
+      <p>By a similar process of selection, and by careful training, English race-horses have come to surpass in fleetness and size the parent Arabs, so that the latter, by the regulations for the Goodwood Races, are favoured in the weights which they carry. Lord Spencer and others have shown how the cattle of England have increased in weight and in early maturity, compared with the stock formerly kept in this country. By comparing the accounts given in various old treatises of the former and present state of carrier and tumbler pigeons in Britain, India, and Persia, we can trace the stages through which they have insensibly passed, and come to differ so greatly from the rock-pigeon.</p>
+      <p>Youatt gives an excellent illustration of the effects of a course of selection which may be considered as unconscious, in so far that the breeders could never have expected, or even wished, to produce the result which ensued—namely, the production of the distinct strains. The two flocks of Leicester sheep kept by Mr. Buckley and Mr. Burgess, as Mr. Youatt remarks, "Have been purely bred from the original stock of Mr. Bakewell for upwards of fifty years. There is not a suspicion existing in the mind of any one at all acquainted with the subject that the owner of either of them has deviated in any one instance from the pure blood of Mr. Bakewell's flock, and yet the difference between the sheep possessed by these two gentlemen is so great that they have the appearance of being quite different varieties."</p>
+      <p>If there exist savages so barbarous as never to think of the inherited character of the offspring of their domestic animals, yet any one animal particularly useful to them, for any special purpose, would be carefully preserved during famines and other accidents, to which savages are so liable, and such choice animals would thus generally leave more offspring than the inferior ones; so that in this case there would be a kind of unconscious selection going on. We see the value set on animals even by the barbarians of Tierra del Fuego, by their killing and devouring their old women, in times of dearth, as of less value than their dogs.</p>
+    </section>
+    <section id="position-4" class="ha-waypoint" data-animate-down="ha-header-color" data-animate-up="ha-header-rotateBack">
+      <p>At the present time, eminent breeders try by methodical selection, with a distinct object in view, to make a new strain or sub-breed, superior to anything of the kind in the country. But, for our purpose, a form of selection, which may be called unconscious, and which results from every one trying to possess and breed from the best individual animals, is more important. Thus, a man who intends keeping pointers naturally tries to get as good dogs as he can, and afterwards breeds from his own best dogs, but he has no wish or expectation of permanently altering the breed. Nevertheless we may infer that this process, continued during centuries, would improve and modify any breed, in the same way as Bakewell, Collins, etc., by this very same process, only carried on more methodically, did greatly modify, even during their lifetimes, the forms and qualities of their cattle. Slow and insensible changes of this kind could never be recognised unless actual measurements or careful drawings of the breeds in question have been made long ago, which may serve for comparison. In some cases, however, unchanged, or but little changed, individuals of the same breed exist in less civilised districts, where the breed has been less improved. There is reason to believe that King Charles' spaniel has been unconsciously modified to a large extent since the time of that monarch. Some highly competent authorities are convinced that the setter is directly derived from the spaniel, and has probably been slowly altered from it. It is known that the English pointer has been greatly changed within the last century, and in this case the change has, it is believed, been chiefly effected by crosses with the foxhound; but what concerns us is, that the change has been effected unconsciously and gradually, and yet so effectually that, though the old Spanish pointer certainly came from Spain, Mr. Borrow has not seen, as I am informed by him, any native dog in Spain like our pointer.</p>
+      <p>By a similar process of selection, and by careful training, English race-horses have come to surpass in fleetness and size the parent Arabs, so that the latter, by the regulations for the Goodwood Races, are favoured in the weights which they carry. Lord Spencer and others have shown how the cattle of England have increased in weight and in early maturity, compared with the stock formerly kept in this country. By comparing the accounts given in various old treatises of the former and present state of carrier and tumbler pigeons in Britain, India, and Persia, we can trace the stages through which they have insensibly passed, and come to differ so greatly from the rock-pigeon.</p>
+      <p>Youatt gives an excellent illustration of the effects of a course of selection which may be considered as unconscious, in so far that the breeders could never have expected, or even wished, to produce the result which ensued—namely, the production of the distinct strains. The two flocks of Leicester sheep kept by Mr. Buckley and Mr. Burgess, as Mr. Youatt remarks, "Have been purely bred from the original stock of Mr. Bakewell for upwards of fifty years. There is not a suspicion existing in the mind of any one at all acquainted with the subject that the owner of either of them has deviated in any one instance from the pure blood of Mr. Bakewell's flock, and yet the difference between the sheep possessed by these two gentlemen is so great that they have the appearance of being quite different varieties."</p>
+      <p>If there exist savages so barbarous as never to think of the inherited character of the offspring of their domestic animals, yet any one animal particularly useful to them, for any special purpose, would be carefully preserved during famines and other accidents, to which savages are so liable, and such choice animals would thus generally leave more offspring than the inferior ones; so that in this case there would be a kind of unconscious selection going on. We see the value set on animals even by the barbarians of Tierra del Fuego, by their killing and devouring their old women, in times of dearth, as of less value than their dogs.</p>
+    </section>
+    <section id="position-5" class="ha-waypoint" data-animate-down="ha-header-small" data-animate-up="ha-header-color">
+      <p>At the present time, eminent breeders try by methodical selection, with a distinct object in view, to make a new strain or sub-breed, superior to anything of the kind in the country. But, for our purpose, a form of selection, which may be called unconscious, and which results from every one trying to possess and breed from the best individual animals, is more important. Thus, a man who intends keeping pointers naturally tries to get as good dogs as he can, and afterwards breeds from his own best dogs, but he has no wish or expectation of permanently altering the breed. Nevertheless we may infer that this process, continued during centuries, would improve and modify any breed, in the same way as Bakewell, Collins, etc., by this very same process, only carried on more methodically, did greatly modify, even during their lifetimes, the forms and qualities of their cattle. Slow and insensible changes of this kind could never be recognised unless actual measurements or careful drawings of the breeds in question have been made long ago, which may serve for comparison. In some cases, however, unchanged, or but little changed, individuals of the same breed exist in less civilised districts, where the breed has been less improved. There is reason to believe that King Charles' spaniel has been unconsciously modified to a large extent since the time of that monarch. Some highly competent authorities are convinced that the setter is directly derived from the spaniel, and has probably been slowly altered from it. It is known that the English pointer has been greatly changed within the last century, and in this case the change has, it is believed, been chiefly effected by crosses with the foxhound; but what concerns us is, that the change has been effected unconsciously and gradually, and yet so effectually that, though the old Spanish pointer certainly came from Spain, Mr. Borrow has not seen, as I am informed by him, any native dog in Spain like our pointer.</p>
+      <p>By a similar process of selection, and by careful training, English race-horses have come to surpass in fleetness and size the parent Arabs, so that the latter, by the regulations for the Goodwood Races, are favoured in the weights which they carry. Lord Spencer and others have shown how the cattle of England have increased in weight and in early maturity, compared with the stock formerly kept in this country. By comparing the accounts given in various old treatises of the former and present state of carrier and tumbler pigeons in Britain, India, and Persia, we can trace the stages through which they have insensibly passed, and come to differ so greatly from the rock-pigeon.</p>
+      <p>Youatt gives an excellent illustration of the effects of a course of selection which may be considered as unconscious, in so far that the breeders could never have expected, or even wished, to produce the result which ensued—namely, the production of the distinct strains. The two flocks of Leicester sheep kept by Mr. Buckley and Mr. Burgess, as Mr. Youatt remarks, "Have been purely bred from the original stock of Mr. Bakewell for upwards of fifty years. There is not a suspicion existing in the mind of any one at all acquainted with the subject that the owner of either of them has deviated in any one instance from the pure blood of Mr. Bakewell's flock, and yet the difference between the sheep possessed by these two gentlemen is so great that they have the appearance of being quite different varieties."</p>
+      <p>If there exist savages so barbarous as never to think of the inherited character of the offspring of their domestic animals, yet any one animal particularly useful to them, for any special purpose, would be carefully preserved during famines and other accidents, to which savages are so liable, and such choice animals would thus generally leave more offspring than the inferior ones; so that in this case there would be a kind of unconscious selection going on. We see the value set on animals even by the barbarians of Tierra del Fuego, by their killing and devouring their old women, in times of dearth, as of less value than their dogs.</p>
+    </section>
+    <section id="position-6" class="ha-waypoint" data-animate-down="ha-header-box" data-animate-up="ha-header-small">
+      <p>At the present time, eminent breeders try by methodical selection, with a distinct object in view, to make a new strain or sub-breed, superior to anything of the kind in the country. But, for our purpose, a form of selection, which may be called unconscious, and which results from every one trying to possess and breed from the best individual animals, is more important. Thus, a man who intends keeping pointers naturally tries to get as good dogs as he can, and afterwards breeds from his own best dogs, but he has no wish or expectation of permanently altering the breed. Nevertheless we may infer that this process, continued during centuries, would improve and modify any breed, in the same way as Bakewell, Collins, etc., by this very same process, only carried on more methodically, did greatly modify, even during their lifetimes, the forms and qualities of their cattle. Slow and insensible changes of this kind could never be recognised unless actual measurements or careful drawings of the breeds in question have been made long ago, which may serve for comparison. In some cases, however, unchanged, or but little changed, individuals of the same breed exist in less civilised districts, where the breed has been less improved. There is reason to believe that King Charles' spaniel has been unconsciously modified to a large extent since the time of that monarch. Some highly competent authorities are convinced that the setter is directly derived from the spaniel, and has probably been slowly altered from it. It is known that the English pointer has been greatly changed within the last century, and in this case the change has, it is believed, been chiefly effected by crosses with the foxhound; but what concerns us is, that the change has been effected unconsciously and gradually, and yet so effectually that, though the old Spanish pointer certainly came from Spain, Mr. Borrow has not seen, as I am informed by him, any native dog in Spain like our pointer.</p>
+      <p>By a similar process of selection, and by careful training, English race-horses have come to surpass in fleetness and size the parent Arabs, so that the latter, by the regulations for the Goodwood Races, are favoured in the weights which they carry. Lord Spencer and others have shown how the cattle of England have increased in weight and in early maturity, compared with the stock formerly kept in this country. By comparing the accounts given in various old treatises of the former and present state of carrier and tumbler pigeons in Britain, India, and Persia, we can trace the stages through which they have insensibly passed, and come to differ so greatly from the rock-pigeon.</p>
+      <p>Youatt gives an excellent illustration of the effects of a course of selection which may be considered as unconscious, in so far that the breeders could never have expected, or even wished, to produce the result which ensued—namely, the production of the distinct strains. The two flocks of Leicester sheep kept by Mr. Buckley and Mr. Burgess, as Mr. Youatt remarks, "Have been purely bred from the original stock of Mr. Bakewell for upwards of fifty years. There is not a suspicion existing in the mind of any one at all acquainted with the subject that the owner of either of them has deviated in any one instance from the pure blood of Mr. Bakewell's flock, and yet the difference between the sheep possessed by these two gentlemen is so great that they have the appearance of being quite different varieties."</p>
+      <p>If there exist savages so barbarous as never to think of the inherited character of the offspring of their domestic animals, yet any one animal particularly useful to them, for any special purpose, would be carefully preserved during famines and other accidents, to which savages are so liable, and such choice animals would thus generally leave more offspring than the inferior ones; so that in this case there would be a kind of unconscious selection going on. We see the value set on animals even by the barbarians of Tierra del Fuego, by their killing and devouring their old women, in times of dearth, as of less value than their dogs.</p>
+    </section>
+  </div>
+  <div id="scroll-info">
+    Scroll &#8597; - <a href="api/doc/html">API DOCUMENTATION</a>
+  </div>
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-52892914-4', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</body>
+
 </html>
